@@ -1,0 +1,148 @@
+body {
+    margin: 0;
+    /* display: flex;
+    justify-content: center;
+    align-items: center; */
+    width: 100vw;
+    height: 100vw;
+    overflow: hidden;
+    background-color: #24145E;
+}
+
+@keyframes rotation {
+    to {
+        transform: rotateZ(360deg);
+    }
+}
+
+@keyframes shrinkAndGrow {
+    0% {
+        transform: scale(0);
+    }
+
+    25% {
+        transform: scale(0.5);
+    }
+
+    50% {
+        transform: scale(0);
+    }
+
+    75% {
+        transform: scale(1);
+    }
+
+    100% {
+        transform: scale(0);
+    }
+}
+
+@keyframes expandHorizontal {
+    from {
+        transform: scaleX(0);
+    }
+
+    to {
+        transform: scaleX(1);
+    }
+}
+
+@keyframes appearFromBottom {
+    from {
+        transform: translateY(1000px);
+    }
+
+    to {
+        transform: translateY(0);
+    }
+}
+
+@keyframes shakingUpAndDown {
+    from {
+        transform: translateY(0);
+    }
+
+    25% {
+        transform: translateY(5px);
+    }
+
+    50% {
+        transform: translateY(-5px);
+    }
+
+    75% {
+        transform: translateY(5px);
+    }
+
+    100% {
+        transform: translateY(0);
+    }
+}
+
+@keyframes soaking {
+    to {
+        transform: translate(9px, -280px) scale(0);
+    }
+}
+
+@keyframes shrinkHorizontal {
+    to {
+        transform: scaleX(0);
+    }
+}
+
+#planet_2,
+#planet_1 {
+    animation-name: rotation;
+    animation-duration: 4s;
+    animation-iteration-count: infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#star_1,
+#star_3,
+#star_5,
+#star_7,
+#star_9 {
+    animation: shrinkAndGrow 4s infinite;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#star_2,
+#star_4,
+#star_6,
+#star_8 {
+    animation: shrinkAndGrow 5s infinite;
+    animation-delay: 1s;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#UFO-beam {
+    animation: expandHorizontal 3.5s;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#UFO-beam-disappearing {
+    animation: shrinkHorizontal 3.5s;
+    transform-box: fill-box;
+    transform-origin: center;
+}
+
+#number-0 {
+    animation: appearFromBottom 3s;
+}
+
+#alien_hand-R,
+#alien_hand-L {
+    animation: shakingUpAndDown 1s infinite;
+}
+
+#number-0-soaking {
+    animation: soaking 2s;
+    transform-box: fill-box;
+    transform-origin: center;
+}

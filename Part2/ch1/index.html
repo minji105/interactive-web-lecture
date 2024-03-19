@@ -5,7 +5,7 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <script src="https://cdnjs.cloudflare.com/ajax/libs/dat-gui/0.7.9/dat.gui.min.js" integrity="sha512-WoO4Ih0CDOSLYafy22wZD/mcJ7k0ESLqtQsFa6zFKnEUrbtuGU+GkLtVhgt93xa2qewG5gKEC6CWlN8OaCTSVg==" crossorigin="anonymous" referrerpolicy="no-referrer"></script>
-    <title>Document</title>
+    <title>Canvas Particle</title>
     <style>
         html,
         body {
@@ -16,9 +16,7 @@
         }
 
         canvas {
-            filter: url('#gooey')
-                /* filter: blur(50px) contrast(50);
-            background-color: white; */
+            filter: url('#gooey');
         }
     </style>
 </head>
@@ -29,11 +27,11 @@
         <defs>
             <filter id="gooey">
                 <feGaussianBlur stdDeviation="40" in="SourceGraphic" result="blur1" />
-                <feColorMatrix in="blur1" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 100 -23"/>
+                <feColorMatrix in="blur1" mode="matrix" values="1 0 0 0 0  0 1 0 0 0  0 0 1 0 0  0 0 0 100 -23" />
             </filter>
         </defs>
     </svg>
-    <script type="module" src="./index.js"></script>
+    <script src="./index.js"></script>
 </body>
 
 </html>

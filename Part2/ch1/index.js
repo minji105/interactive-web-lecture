@@ -16,14 +16,16 @@ function init() {
     canvas.width = canvasWidth * dpr
     canvas.height = canvasHeight * dpr
     ctx.scale(dpr, dpr)
+
     particles = []
-    const TOTAL = canvasWidth / 40;
+
+    const TOTAL = canvasWidth / 25
 
     for (let i = 0; i < TOTAL; i++) {
         const x = randomNumBetween(0, canvasWidth)
         const y = randomNumBetween(0, canvasHeight)
-        const rad = randomNumBetween(25, 50)
-        const vy = randomNumBetween(1, 4)
+        const rad = randomNumBetween(30, 50)
+        const vy = randomNumBetween(1, 5)
         const particle = new Particle(x, y, rad, vy)
         particles.push(particle)
     }
@@ -36,13 +38,14 @@ const controls = new function () {
     this.blurValue = 40
     this.alphaChannel = 100
     this.alphaOffset = -23
-    this.acc = 1.02
+    this.acc = 1
 }
 
 let gui = new dat.GUI()
 
-const f1 = gui.addFolder('gooey Effect')
+const f1 = gui.addFolder('Gooey Effect')
 f1.open()
+
 f1.add(controls, 'blurValue', 0, 100).onChange(value => {
     feGaussianBlur.setAttribute('stdDeviation', value)
 })
@@ -55,7 +58,8 @@ f1.add(controls, 'alphaOffset', -40, 40).onChange(value => {
 
 const f2 = gui.addFolder('Particle Property')
 f2.open()
-f2.add(controls, 'acc', 1, 1.5, 0.01).onChange(value => {
+
+f2.add(controls, 'acc', 0.9, 1.5, 0.01).onChange(value => {
     particles.forEach(particle => particle.acc = value)
 })
 
@@ -65,7 +69,7 @@ class Particle {
         this.y = y
         this.rad = rad
         this.vy = vy
-        this.acc = 1.02
+        this.acc = 1
     }
     update() {
         this.vy *= this.acc
@@ -83,8 +87,6 @@ class Particle {
 const randomNumBetween = (min, max) => {
     return Math.random() * (max - min + 1) + min
 }
-
-console.log(particles);
 
 let interval = 1000 / 60
 let now, delta
@@ -106,8 +108,8 @@ function animate() {
         if (particle.y - particle.rad > canvasHeight) {
             particle.y = -particle.rad
             particle.x = randomNumBetween(0, canvasWidth)
-            particle.rad = randomNumBetween(25, 50)
-            particle.vy = randomNumBetween(1, 4)
+            particle.rad = randomNumBetween(30, 50)
+            particle.vy = randomNumBetween(1, 5)
         }
     })
 
